@@ -1,0 +1,150 @@
+{% load humanize %}
+<div class="row">
+  <form id="uf-data" method="get" action="get-data">
+    <div class="form-row">
+      <div class="col">
+        <input type="datetime" id="date_from" class="form-control datepicker" name="date_from" placeholder="Fecha inicio">
+      </div>
+      <div class="col">
+        <input type="datetime" id="date_to" class="form-control datepicker" name="date_to" placeholder="Fecha fin">
+      </div>
+      <div class="col">
+        <select class="form-control" id="type_data" name="type_data">
+          <option value="uf" selected>UF</option>
+          <option value="dolar">Dólar</option>
+        </select>
+      </div>
+      <div class="col">
+        <input type="submit" class="form-control btn btn-outline-success" value="Buscar">
+      </div>
+    </div>
+  </form>
+</div>
+  <!-- <div class="row mt-1">
+    <div class="col-4 border">
+      <h3>TABLE DAY BY DAY</h3>
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Valor</th>
+            <th scope="col">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for val in data %}
+            <tr>
+              <td>{{ val.value|floatformat:2|intcomma }}</td>
+              <td>{{ val.date|date:"d-m-Y" }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-4 border">
+        <h3>COMPUTED VALUES</h3>
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            Valores Destacados
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <p><b>Promedio:</b></p>
+              {{ avg|floatformat:2|intcomma }}
+            </li>
+            <li class="list-group-item">
+              <p> <b>Más alto: </b></p>
+              {{ highest.value|floatformat:2|intcomma }} ( {{ highest.date|date:"d-m-Y" }} )
+            </li>
+            <li class="list-group-item">
+              <p> <b>Más Bajo: </b></p>
+              {{ lowest.value|floatformat:2|intcomma }} ( {{ lowest.date|date:"d-m-Y" }} )
+            </li>
+          </ul>
+        </div>
+    </div>
+    <div class="col-4 border">
+      <h3>CHART</h3>
+      <canvas id="chart" width="400" height="400"></canvas>
+    </div>
+  </div> -->
+
+  <div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Tabla con valores por fecha
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th scope="col">Valor</th>
+              <th scope="col">Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {% for val in data %}
+              <tr>
+                <td>{{ val.value|floatformat:2|intcomma }}</td>
+                <td>{{ val.date|date:"d-m-Y" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Valores destacados de consulta
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            Valores Destacados
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <p><b>Promedio:</b></p>
+              {{ avg|floatformat:2|intcomma }}
+            </li>
+            <li class="list-group-item">
+              <p> <b>Más alto: </b></p>
+              {{ highest.value|floatformat:2|intcomma }} ( {{ highest.date|date:"d-m-Y" }} )
+            </li>
+            <li class="list-group-item">
+              <p> <b>Más Bajo: </b></p>
+              {{ lowest.value|floatformat:2|intcomma }} ( {{ lowest.date|date:"d-m-Y" }} )
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Gráfico
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="data-chart"></div>
+      </div>
+    </div>
+  </div>
+</div>
