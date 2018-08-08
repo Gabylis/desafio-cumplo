@@ -20,87 +20,39 @@
     </div>
   </form>
 </div>
-  <!-- <div class="row mt-1">
-    <div class="col-4 border">
-      <h3>TABLE DAY BY DAY</h3>
-      <table class="table table-responsive">
-        <thead>
-          <tr>
-            <th scope="col">Valor</th>
-            <th scope="col">Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          {% for val in data %}
-            <tr>
-              <td>{{ val.value|floatformat:2|intcomma }}</td>
-              <td>{{ val.date|date:"d-m-Y" }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    <div class="col-4 border">
-        <h3>COMPUTED VALUES</h3>
-        <div class="card" style="width: 18rem;">
-          <div class="card-header">
-            Valores Destacados
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <p><b>Promedio:</b></p>
-              {{ avg|floatformat:2|intcomma }}
-            </li>
-            <li class="list-group-item">
-              <p> <b>Más alto: </b></p>
-              {{ highest.value|floatformat:2|intcomma }} ( {{ highest.date|date:"d-m-Y" }} )
-            </li>
-            <li class="list-group-item">
-              <p> <b>Más Bajo: </b></p>
-              {{ lowest.value|floatformat:2|intcomma }} ( {{ lowest.date|date:"d-m-Y" }} )
-            </li>
-          </ul>
-        </div>
-    </div>
-    <div class="col-4 border">
-      <h3>CHART</h3>
-      <canvas id="chart" width="400" height="400"></canvas>
-    </div>
-  </div> -->
 
   <div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Tabla con valores por fecha
-        </button>
-      </h5>
-    </div>
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Tabla con valores por fecha
+          </button>
+        </h5>
+      </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        <table class="table table-responsive">
-          <thead>
-            <tr>
-              <th scope="col">Valor</th>
-              <th scope="col">Fecha</th>
-            </tr>
-          </thead>
-          <tbody>
-
-            {% for val in data %}
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <table class="table table-responsive">
+            <thead>
               <tr>
-                <td>{{ val.value|floatformat:2|intcomma }}</td>
-                <td>{{ val.date|date:"d-m-Y" }}</td>
+                <th scope="col">Valor</th>
+                <th scope="col">Fecha</th>
               </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+
+              {% for val in data %}
+                <tr>
+                  <td>{{ val.value|floatformat:2|intcomma }}</td>
+                  <td>{{ val.date|date:"d-m-Y" }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
