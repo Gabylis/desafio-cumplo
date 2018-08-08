@@ -1,6 +1,6 @@
 {% load humanize %}
-<div class="row">
-  <form id="uf-data" method="get" action="get-data">
+<div class="row p-5">
+  <form id="form-data" method="get" action="get-data">
     <div class="form-row">
       <div class="col">
         <input type="datetime" id="date_from" class="form-control datepicker" name="date_from" placeholder="Fecha inicio">
@@ -95,7 +95,7 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
-        <div class="data-chart"></div>
+        <div id="data-chart"></div>
       </div>
     </div>
   </div>
